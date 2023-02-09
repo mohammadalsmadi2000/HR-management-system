@@ -66,4 +66,4 @@ for (let i = 0; i <= 6; i++) {
 }
 
 
-// The ( console.log) has been removed for the sake of performance
+// The ( console.log) has been removed for the sake of performance   
