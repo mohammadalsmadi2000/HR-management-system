@@ -8,7 +8,7 @@ function Employee(employeeID, fullName, department, level, imageURL) {
     this.level = level;
     this.imageURL = imageURL;
 }
-//create a prototype function for calculating the salary
+//create a prototype function for calculating the salary  
 Employee.prototype.salary = function () {
     let max, min, tax = 0.075;
     switch (this.level) {
