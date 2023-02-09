@@ -1,0 +1,128 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  flex: 1;
+  background-color: #1e90ff;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 20px;
+  margin-top: 8px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+header img {
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+}
+
+header h1 {
+  font-size: 36px;
+  color: white;
+  margin: 0;
+}
+
+header nav ul li a {
+  font-size: 18px;
+  color: white;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+
+/* .logo {
+  width: 100px;
+  height: 100px;
+  animation: logo-animation 2s ease-in-out infinite;
+}
+
+@keyframes logo-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} */
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header nav ul li a:hover {
+  color: darkgray;
+}
+
+ul {
+  display: flex;
+}
+
+header h1:hover {
+  color: #185abd;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  width: 100%;
+  background-color: #1e90ff;
+  color: #fff;
+  padding: 30px 0;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+
+  /* align-self:flex-end; */
+}
+
+footer img {
+  width: 50px;
+  margin-bottom: 20px;
+}
+
+footer p {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.footer a {
+  color: #fff;
+  margin: 0 10px;
+  font-size: 20px;
+  transition: all 0.3s;
+}
+
+.footer a:hover {
+  color: #1e90ff;
+  text-decoration: none;
+}
+a {
+  /* color: #1e90ff; */
+  text-decoration: none;
+  margin-left: 6px;
+
+}
+
+.animated-text {
+  animation: animation-name2 4s linear forwards;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@keyframes animation-name2 {
+  from {
+    width: 0;
+  }
+  to {
+    width: 17%;
+  }
+}
