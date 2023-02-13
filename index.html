@@ -36,7 +36,70 @@
         </ul>
       </nav>
     </header>
-    <main></main>
+    <main>
+      <div id="divForm">
+        <br />
+        <form id="employeeForm">
+          <fieldset>
+            <legend>Add new Employee :</legend>
+            <br />
+            <!-- name -->
+            <label for="name">Full name : </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Enter your name"
+            />
+            <!-- select Departments -->
+
+            <label for="Departments">Departments :</label>
+
+            <select name="Departments" id="Departments">
+              <option value="">--Select department--</option>
+              <option value="Finance">Finance</option>
+              <option value="Development">Development</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Administration">Administration</option>
+            </select>
+
+            <br />
+            <br />
+            <label for="Levels">Choose a Level:</label>
+
+            <select name="Levels" id="Levels">
+              <option value="">--Select level--</option>
+              <option value="Senior">Senior</option>
+              <option value="Mid-Senior">Mid-Senior</option>
+              <option value="Junior">Junior</option>
+            </select>
+
+            <label for="imgPath">image : </label>
+            <input
+              type="text"
+              id="imgPath"
+              name="imgPath"
+              placeholder="image"
+            />
+            <br />
+            <br />
+
+            <input type="submit" value="Add" />
+            <input type="reset" />
+          </fieldset>
+        </form>
+      </div>
+      <div style="display: flex; flex-direction: column;align-items: center;">
+        <h3 >Finance</h3>
+        <section style="border-width: 3px; border-color:#000 ;" id="Finance"></section>
+        <h3>Development</h3>
+        <section id="Development"></section>
+        <h3>Marketing</h3>
+        <section id="Marketing"></section>
+        <h3>Administration</h3>
+        <section id="Administration"></section>
+      </div>
+    </main>
     <footer>
       <img src="./assets/cd42d8fc8f9c592694fa8033fdd55544.gif" alt="Logo" />
       <div class="animated-text" style="display: flex; align-items: center">
@@ -50,7 +113,7 @@
           justify-content: space-between;
         "
       >
-      <!-- <div style="width: 200px; height: 100px; display: flex; justify-content: center; align-items: center;" ></div> -->
+        <!-- <div style="width: 200px; height: 100px; display: flex; justify-content: center; align-items: center;" ></div> -->
         <a
           style="color: antiquewhite"
           href="#"
