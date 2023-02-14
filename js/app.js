@@ -170,7 +170,7 @@ function addEmployeeHandler(event) {
     let departmentOutput = deperatmentSelect.options[deperatmentSelect.selectedIndex].value;
     let levelSelect = document.querySelector('#Levels');
     let levelOutput = levelSelect.options[levelSelect.selectedIndex].value;
-    let img = './assets/1231410.png'
+    let img = event.target.imgPath.value||'./assets/1231410.png'
     if (fullname) {
         let newEmployee = new Employee(fullname, departmentOutput, levelOutput, img);
         newEmployee.salary();
