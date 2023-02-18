@@ -1,4 +1,6 @@
 // alert("sss");
+// array use to info
+let arrayOfEmployeeFromLocalStorage = [];
 
 //create a constructor to generate an employee object
 function Employee(fullName, department, level, imageURL) {
@@ -33,7 +35,9 @@ Employee.prototype.salary = function () {
 }
 
 //create a render prototype function
-Employee.prototype.render = function () {
+const render = function () {
+
+    getInfoFromLocalStorage();
     // return document.write(`<table style="border: 1px solid black; border-collapse: collapse;">
     //                         <tr style="background-color: #8ac5ff;">
     //                         <th style="border: 1px solid black;width: 200px; height: 50px; ">Full Name</th>
@@ -51,69 +55,75 @@ Employee.prototype.render = function () {
     // 3. add text content to it || attribuates
 
     const sectionEmEl1 = document.getElementById('Finance');
-    const sectionEmEl2= document.getElementById('Development');
+    const sectionEmEl2 = document.getElementById('Development');
     const sectionEmEl3 = document.getElementById('Marketing');
     const sectionEmEl4 = document.getElementById('Administration');
-    // sectionEmEl.style.marginLeft = "30px";
-    // sectionEmEl.style.marginBottom = "180px";
-    // sectionEmEl.style.display = 'flex'
-    let sec;
-    switch(this.department){
-        case 'Finance':{
-            sec=sectionEmEl1
-        }break;
-        case 'Development':{
-            sec=sectionEmEl2
-        }break;
-        case 'Marketing':{
-            sec=sectionEmEl3
-        }break;
-        case 'Administration':{
-           sec= sectionEmEl4
-        }break;
+
+
+    sectionEmEl1.innerHTML = "";
+    sectionEmEl2.innerHTML = "";
+    sectionEmEl3.innerHTML = "";
+    sectionEmEl4.innerHTML = "";
+    for (const item of arrayOfEmployeeFromLocalStorage) {
+       
+        let sec;
+        switch (item.department) {
+            case 'Finance': {
+                sec = sectionEmEl1
+            } break;
+            case 'Development': {
+                sec = sectionEmEl2
+            } break;
+            case 'Marketing': {
+                sec = sectionEmEl3
+            } break;
+            case 'Administration': {
+                sec = sectionEmEl4
+            } break;
+        }
+        const Card = document.createElement('div');
+        sec.append(Card);
+        Card.style.backgroundColor = "#8ac5ff"
+        Card.style.width = "300px";
+        Card.style.height = "400px";
+        Card.style.border = "1px solid black";
+        Card.style.borderRadius = "10px";
+        Card.style.overflow = "hidden";
+        Card.style.marginRight = "25px"
+        Card.style.display = 'flex';
+        Card.style.flexDirection = "column"
+        Card.style.alignItems = 'center';
+
+        // Card.setAttribute('style', 'background-Color:red');
+
+        const imgEl = document.createElement('img');
+        Card.append(imgEl);
+        imgEl.setAttribute('src', item.imageURL);
+        imgEl.width = "250";
+        imgEl.height = "250";
+        imgEl.style.marginTop = '10px';
+        imgEl.style.borderRadius = '20%'
+        // imgEl.style.margin='5px 5px 5px 5px'
+        const p1El = document.createElement('p');
+        Card.append(p1El);
+        p1El.textContent = `Name:${item.fullName}-ID:${item.employeeID}`
+        p1El.style.fontSize = "16px"
+        p1El.style.textAlign = 'center'
+        p1El.style.marginTop = '10px'
+
+        const p1E2 = document.createElement('p');
+        Card.append(p1E2);
+        p1E2.textContent = `Deperatment:${item.department}-Level:${item.level}`
+        p1E2.style.fontSize = "16px"
+        p1E2.style.textAlign = 'center'
+        p1E2.style.marginTop = '10px'
+        const p1E3 = document.createElement('p');
+        Card.append(p1E3);
+        p1E3.textContent = `${item.salary}`
+        p1E3.style.fontSize = "16px"
+        p1E3.style.textAlign = 'center'
+        p1E3.style.marginTop = '10px'
     }
-    const Card = document.createElement('div');
-    sec.append(Card);
-    Card.style.backgroundColor = "#8ac5ff"
-    Card.style.width = "300px";
-    Card.style.height = "400px";
-    Card.style.border = "1px solid black";
-    Card.style.borderRadius = "10px";
-    Card.style.overflow = "hidden";
-    Card.style.marginRight = "25px"
-    Card.style.display = 'flex';
-    Card.style.flexDirection = "column"
-    Card.style.alignItems = 'center';
-
-
-
-    const imgEl = document.createElement('img');
-    Card.append(imgEl);
-    imgEl.setAttribute('src', this.imageURL);
-    imgEl.width = "250";
-    imgEl.height = "250";
-    imgEl.style.marginTop = '10px';
-    imgEl.style.borderRadius = '20%'
-    // imgEl.style.margin='5px 5px 5px 5px'
-    const p1El = document.createElement('p');
-    Card.append(p1El);
-    p1El.textContent = `Name:${this.fullName}-ID:${this.employeeID}`
-    p1El.style.fontSize = "16px"
-    p1El.style.textAlign = 'center'
-    p1El.style.marginTop = '10px'
-
-    const p1E2 = document.createElement('p');
-    Card.append(p1E2);
-    p1E2.textContent = `Deperatment:${this.department}-Level:${this.level}`
-    p1E2.style.fontSize = "16px"
-    p1E2.style.textAlign = 'center'
-    p1E2.style.marginTop = '10px'
-    const p1E3 = document.createElement('p');
-    Card.append(p1E3);
-    p1E3.textContent = `${this.salary()}`
-    p1E3.style.fontSize = "16px"
-    p1E3.style.textAlign = 'center'
-    p1E3.style.marginTop = '10px'
 }
 
 //function to generate a unique four digits employee id number
@@ -163,23 +173,50 @@ function addEmployeeHandler(event) {
 
     const nameField = document.getElementById('name');
 
-    console.log(event.target.name.value);
+    // console.log(event.target.name.value);
     event.preventDefault();
     let fullname = event.target.name.value;
     let deperatmentSelect = document.querySelector('#Departments');
     let departmentOutput = deperatmentSelect.options[deperatmentSelect.selectedIndex].value;
     let levelSelect = document.querySelector('#Levels');
     let levelOutput = levelSelect.options[levelSelect.selectedIndex].value;
-    let img = event.target.imgPath.value||'./assets/1231410.png'
+    let img = event.target.imgPath.value || './assets/1231410.png';
+
+    let objForSaveItemInLocalStorage =
+
+       
+
+        getInfoFromLocalStorage();
     if (fullname) {
         let newEmployee = new Employee(fullname, departmentOutput, levelOutput, img);
-        newEmployee.salary();
-        newEmployee.ID();
-        newEmployee.render();
+        
+        
         nameField.style.borderColor = '#000';
-    }else{
+        objForSaveItemInLocalStorage = { employeeID: newEmployee.ID(),fullName: fullname, department: departmentOutput, level: levelOutput, imageURL: img, salary: newEmployee.salary() };
+        saveInfoInLocalStorage(objForSaveItemInLocalStorage);
+        render();
+    } else {
         // nameField.focus();
         nameField.style.borderColor = 'red';
     }
 
 }
+
+function saveInfoInLocalStorage(info) {
+    arrayOfEmployeeFromLocalStorage.push(info);
+    localStorage.setItem("arrayOfEmployeeFromLocalStorage", JSON.stringify(arrayOfEmployeeFromLocalStorage))
+   
+}
+
+function getInfoFromLocalStorage() {
+    let s = localStorage.getItem('arrayOfEmployeeFromLocalStorage');
+    let a = JSON.parse(s)
+    if (s)
+        arrayOfEmployeeFromLocalStorage = [...a];
+    else null;
+    
+}
+
+
+
+render();
